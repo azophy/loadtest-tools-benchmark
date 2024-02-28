@@ -5,7 +5,7 @@ I've read [this great article from the creator of k6 about benchmarking of vario
 
 The criteria of the tools I prefers:
 - open source. its 2024 guys
-- support scripting. Only testing static GET or POST requests are useless to me. Also support better collaboration
+- support dynamic payload. Only testing static GET or POST requests are useless to me
 - command line. I hate GUI tools
 - local tools. No cloud based SaaS please
 - fast enough. Java & Python seems like a no go
@@ -18,11 +18,14 @@ The tools I wish to look into:
 - https://k6.io -> huge ecosystem. I just need to check the performance
 - https://www.artillery.io -> scriptable payload as selecting random item from list of available payloads
 - https://github.com/mcollina/autocannon -> nodejs based
+- https://github.com/fcsonline/drill -> yaml scriptable
+- locust -> python based
+- https://github.com/tsenart/vegeta -> need to make sure how to do dynamic payload
 
 Tools I intentionally excluded:
-- Java based: jmeter, gatling
-- not scriptable: hey, vegeta
-  
+- Java based: jmeter, gatling, ab
+- no dynamic payload: hey
+   
 Metrics I look out for. For a given target & given testing device specification:
 - how many request could be made
 - how much memory used
