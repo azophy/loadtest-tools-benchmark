@@ -1,7 +1,7 @@
 # loadtest-tools-benchmark
 benchmark of various load testing tools, focusing on open source, scriptable, command-line based tools
 
-I've read this great article from the creator of k6 about benchmarking of various load testing tools. However the article was from 2020, and I wish I could have the latest data for the tools I'm currently interested with.
+I've read [this great article from the creator of k6 about benchmarking of various load testing tools](https://grafana.com/blog/2020/03/03/open-source-load-testing-tool-review/). However the article was from 2020, and I wish I could have the latest data for the tools I'm currently interested with.
 
 The criteria of the tools I prefers:
 - open source. its 2024 guys
@@ -17,7 +17,12 @@ The tools I wish to look into:
 - https://github.com/rogerwelin/cassowary -> need to make sure about the scriptability. the docs only mention scripting the parameters
 - https://k6.io -> huge ecosystem. I just need to check the performance
 - https://www.artillery.io -> scriptable payload as selecting random item from list of available payloads
+- https://github.com/mcollina/autocannon -> nodejs based
 
+Tools I intentionally excluded:
+- Java based: jmeter, gatling
+- not scriptable: hey, vegeta
+  
 Metrics I look out for. For a given target & given testing device specification:
 - how many request could be made
 - how much memory used
