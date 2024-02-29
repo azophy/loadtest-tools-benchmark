@@ -20,7 +20,7 @@ services:
           memory: 1G
 
   tester:
-    image: golang:1.21-alpine
+    build: ./tester
     ports:
       - '3001:3001'
     volumes:
