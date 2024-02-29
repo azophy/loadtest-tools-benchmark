@@ -3,7 +3,10 @@
 TARGET_URL=http://target:3000/test
 DEFAULT_DURATION="60s"
 
-pause_test() { sleep 60; }
+pause_test() {
+  echo "pausing for 60 seconds...";
+  sleep 60;
+}
 
 wrk --latency -d $DEFAULT_DURATION $TARGET_URL/wrk
 
