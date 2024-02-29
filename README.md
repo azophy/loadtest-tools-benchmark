@@ -25,7 +25,7 @@ The tools I wish to look into:
 Tools I intentionally excluded:
 - Java based: jmeter, gatling, ab
 - no dynamic payload: hey
-   
+
 Metrics I look out for. For a given target & given testing device specification:
 - how many request could be made
 - how much memory used
@@ -36,4 +36,11 @@ Metrics I look out for. For a given target & given testing device specification:
 - the target is simple go app with prometheus exporter. the docker compose also included prometheus scrapper & grafana for visualization
 
 
+## Running
 
+1. clone
+2. docker compose up -d
+3. open grafana at `localhost:3002`
+4. To monitor incoming request, create new visualization with these settings:
+
+![screenshot](/misc/screenshot-grafana.png)

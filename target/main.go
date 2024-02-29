@@ -10,11 +10,19 @@ import (
 
 func main() {
 	e := echo.New()
-	e.Use(echoprometheus.NewMiddleware("myapp")) // adds middleware to gather metrics
+  e.Use(echoprometheus.NewMiddlewareWithConfig(echoprometheus.MiddlewareConfig{
+		// labels of default metrics can be modified or added with `LabelFuncs` function
+		LabelFuncs: map[string]echoprometheus.LabelValueFunc{
+			"test_tool": func(c echo.Context, err error) string { // additional custom label
+        toolName := c.Param("tool")
+				return toolName
+			},
+		},
+	})) // adds middleware to gather metrics
 	e.GET("/metrics", echoprometheus.NewHandler()) // adds route to serve gathered metrics
 
-	e.GET("/hello", func(c echo.Context) error {
-		return c.String(http.StatusOK, "hello")
+  e.GET("/test/:tool", func(c echo.Context) error {
+		return c.String(http.StatusOK, "ok")
 	})
 
 	if err := e.Start(":3000"); err != nil && !errors.Is(err, http.ErrServerClosed) {
