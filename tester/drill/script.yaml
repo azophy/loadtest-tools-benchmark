@@ -1,0 +1,12 @@
+---
+
+concurrency: 50
+base: 'http://target:3000'
+iterations: 50
+rampup: 2
+
+plan:
+  - name: Fetch test
+    request:
+      url: /test/drill
+

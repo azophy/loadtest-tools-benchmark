@@ -1,0 +1,27 @@
+config:
+  # This is a test server run by team Artillery
+  # It's designed to be highly scalable
+  target: http://target:3000
+  phases:
+    - duration: 1000
+      arrivalRate: 100
+      rampTo: 100000
+      name: Ramp up to breakpoint
+  # Load & configure a couple of useful plugins
+  # https://docs.art/reference/extensions
+  plugins:
+    ensure: {}
+    apdex: {}
+    metrics-by-endpoint: {}
+  apdex:
+    threshold: 100
+  ensure:
+      thresholds:
+        - http.response_time.p99: 1000
+        - http.response_time.p95: 75
+scenarios:
+  - flow:
+      - loop:
+        - get:
+            url: "/test/artilerry"
+        count: 100

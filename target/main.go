@@ -6,6 +6,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"log"
 	"net/http"
+  "io/ioutil"
 )
 
 func main() {
@@ -23,6 +24,15 @@ func main() {
 
   e.GET("/test/:tool", func(c echo.Context) error {
 		return c.String(http.StatusOK, "ok")
+	})
+
+  e.POST("/test/:tool", func(c echo.Context) error {
+		body, err := ioutil.ReadAll(c.Request().Body)
+    if err != nil {
+        return err
+    }
+
+    return c.String(http.StatusOK, string(body))
 	})
 
 	if err := e.Start(":3000"); err != nil && !errors.Is(err, http.ErrServerClosed) {

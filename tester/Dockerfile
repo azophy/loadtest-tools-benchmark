@@ -9,12 +9,12 @@ ARG GO_DOWNLOAD_URL=https://go.dev/dl/go1.22.0.linux-amd64.tar.gz
 RUN npm install -g artillery
 RUN npm install -g autocannon
 
-RUN apk update && apk add wrk 
-RUN wget -qO- $VEGETA_DOWNLOAD_URL | tar xvzf -  -C /usr/local
-RUN wget -qO- $CASSOWARY_DOWNLOAD_URL | tar xvzf -  -C /usr/local
-RUN wget -qO- $DRILL_DOWNLOAD_URL | tar xvzf -  -C /usr/local
-RUN wget -qO- $K6_DOWNLOAD_URL | tar xvzf - -C /usr/local
+RUN apk update && apk add wrk curl
+RUN wget -qO- $VEGETA_DOWNLOAD_URL | tar xvzf -  -C /usr/local/bin
+RUN wget -qO- $CASSOWARY_DOWNLOAD_URL | tar xvzf -  -C /usr/local/bin
+RUN wget -qO- $DRILL_DOWNLOAD_URL | tar xvzf -  -C /usr/local/bin
+RUN wget -qO- $K6_DOWNLOAD_URL | tar xvzf - -C /usr/local/bin
 
 ENV PATH="${PATH}:/usr/local/go/bin"
 RUN wget -qO- $GO_DOWNLOAD_URL | tar xvzf - -C /usr/local \
- && go install github.com/vearutop/plt@latest 
+ && go install github.com/vearutop/plt@latest
