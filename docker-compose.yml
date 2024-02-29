@@ -1,0 +1,82 @@
+# docker-compose.yml
+
+version: "3.9"
+services:
+  target:
+    image: golang:1.21-alpine
+    volumes:
+      - ./target:/web
+    ports:
+      - '3000:3000'
+    working_dir: /web
+    # for now, we will run the code manually using `docker compose exec`
+    #command: tail -f /dev/null
+    command: go run .
+    # resource limitation definitions. reference: https://docs.docker.com/compose/compose-file/deploy/#resources
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+
+  tester:
+    image: golang:1.21-alpine
+    ports:
+      - '3001:3001'
+    volumes:
+      - .:/web
+    working_dir: /web
+    entrypoint: ""
+    command: tail -f /dev/null
+    # resource limitation definitions. reference: https://docs.docker.com/compose/compose-file/deploy/#resources
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - 9090:9090
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yaml'
+    volumes:
+      - ./config/prometheus.yaml:/etc/prometheus/prometheus.yaml:ro
+      - prometheus-data:/prometheus
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    ports:
+      - '3002:3000'
+    volumes:
+      - grafana-data:/var/lib/grafana
+    restart: unless-stopped
+
+  cadvisor:
+    #image: gcr.io/cadvisor/cadvisor
+    # for mac m1/m2
+    image: gcr.io/cadvisor/cadvisor-arm64:v0.47.1
+    platform: linux/arm64/v8
+    command:
+      - '-port=8098'
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    devices:
+      - /dev/kmsg
+    privileged: true
+    restart: unless-stopped
+    expose:
+      - 8098
+    ports:
+      - '8098:8098'
+
+volumes:
+  prometheus-data:
+  grafana-data:

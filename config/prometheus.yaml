@@ -1,0 +1,20 @@
+global:
+  scrape_interval:     15s # By default, scrape targets every 15 seconds.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds.
+
+scrape_configs:
+  - job_name: 'prometheus'
+    scrape_interval: 1s
+    static_configs:
+      - targets: ['prometheus:9090']
+
+  - job_name: 'cadvisor'
+    scrape_interval: 1s
+    static_configs:
+      - targets: ['cadvisor:8098']
+
+  - job_name: 'test_target'
+    scrape_interval: 1s
+    static_configs:
+      - targets: ['target:3000']
+
