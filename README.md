@@ -52,12 +52,14 @@ For a given target & given testing device specification:
 2. docker compose up -d
 3. open grafana at `localhost:3002`
 4. To monitor test results, I have provided 'benchmark' dashboard in this repo. 
-
   ![screenshot](./misc/screenshot-grafana.png)
-  
   however in my experience your dashboard my unable to show the data. To fix it, you could try to edit the panel and then switching between "builder" & "code" query and then clicking "run queries" button until the graph showed the data. after you successfully see the graph, clik "apply" in the upper-right corner. do that to all panels. Dont forget to save the dashboard after you finish with all of the panels. I haven't been able to find why this is happening, but I'll make sure to update this readme after I've done so.
-5. To test suite is available at `./tester/scripts*.sh` 
-
+5. To run the benchmark, the test suites are available at `./tester/scripts*.sh` . For example to run the default static single request test suite, run this:
+   ```sh
+   $ docker compose exec tester sh
+   # ./tester/script.sh
+   ```
+   
 ## Results
 
 Currently available results:
