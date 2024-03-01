@@ -16,8 +16,10 @@ the other 3 which I stil haven't been able to run properly:
 I set the spec to 4 CPU 4 Gb RAM for the tester container, and 4 CPU 2 Gb for the target. I run it on my personal 16 CPU 16 Gb RAM laptop.
 
 ## results
-!(conclusion)[./conclusion.png]
-!(overall)[./overall.png]
+
+![conclusion](./conclusion.png)
+
+![overall](./overall.png)
 
 ## conclusion
 - wrk won by a huge margin in terms of throughput, memory efficiency, etc.
