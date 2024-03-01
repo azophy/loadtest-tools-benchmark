@@ -7,7 +7,7 @@ ARG DRILL_DOWNLOAD_URL=https://github.com/fcsonline/drill/releases/download/0.8.
 ARG GO_DOWNLOAD_URL=https://go.dev/dl/go1.22.0.linux-amd64.tar.gz
 
 RUN npm install -g artillery
-RUN npm install -g autocannon
+RUN npm install -g autocannon --save
 
 RUN apk update && apk add wrk
 RUN wget -qO- $VEGETA_DOWNLOAD_URL | tar xvzf -  -C /usr/local/bin

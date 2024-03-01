@@ -9,13 +9,13 @@ pause_test() {
 }
 
 echo "starting test using wrk..."
-wrk --latency -d "${DEFAULT_DURATION}s" $TARGET_URL/wrk
+wrk -c 1000 -t 8 --timeout 1s --latency -d "${DEFAULT_DURATION}s" $TARGET_URL/wrk
 
 pause_test
 
 echo "starting test using autocannon..."
 # we dont specify num of workers as IME it actually reduce the load
-autocannon --latency -c 1000 -d "${DEFAULT_DURATION}s"  $TARGET_URL/autocannon
+node tester/autocannon/script-static-singlereq.js
 
 pause_test
 
