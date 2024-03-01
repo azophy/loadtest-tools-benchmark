@@ -9,7 +9,7 @@ pause_test() {
 }
 
 echo "starting test using wrk..."
-wrk --latency -d "${DEFAULT_DURATION}s" $TARGET_URL/wrk
+wrk --latency -d "${DEFAULT_DURATION}s" -d ./tester/wrk/script-dynamic-singlereq.lua $TARGET_URL/wrk
 
 pause_test
 

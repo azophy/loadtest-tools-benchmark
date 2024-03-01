@@ -25,6 +25,4 @@ COPY --from=build-stage /app /app
 
 EXPOSE 3000
 
-USER nonroot:nonroot
-
 ENTRYPOINT ["/app"]

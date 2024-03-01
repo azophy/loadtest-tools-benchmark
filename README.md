@@ -49,3 +49,10 @@ My plan is to test in 3 scenario:
 4. To monitor incoming request, create new visualization with these settings:
 
 ![screenshot](/misc/screenshot-grafana.png)
+
+  - reference for the dasboard: https://grafana.com/grafana/dashboards/193-docker-monitoring/
+
+## Results
+
+Currently available results:
+- [2024-03-01 14:00](https://github.com/azophy/loadtest-tools-benchmark/tree/main/results/20240301_140000)

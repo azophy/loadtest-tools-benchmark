@@ -17,8 +17,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '1'
-          memory: 1G
+          cpus: '4'
+          memory: 2G
 
   tester:
     build: ./tester
@@ -33,8 +33,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '1'
-          memory: 1G
+          cpus: '4'
+          memory: 4G
 
   prometheus:
     image: prom/prometheus
