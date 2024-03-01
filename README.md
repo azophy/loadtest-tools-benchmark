@@ -31,6 +31,11 @@ Metrics I look out for. For a given target & given testing device specification:
 - how much memory used
 - latency of the generated requests
 
+My plan is to test in 3 scenario:
+- static single GET
+- dynamic single POST
+- complex multiple requests
+
 ## The setup
 - Using docker compose, all network calls are made locally
 - the target is simple go app with prometheus exporter. the docker compose also included prometheus scrapper & grafana for visualization
