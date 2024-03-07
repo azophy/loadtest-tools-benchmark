@@ -1,7 +1,7 @@
 #!/bin/sh
 
-TARGET_URL=http://target:3000/test
-DEFAULT_DURATION="60"
+export TARGET_URL=http://target:3000/test
+export DEFAULT_DURATION="60"
 
 pause_test() {
   echo "pausing for 60 seconds...";
@@ -20,7 +20,7 @@ node tester/autocannon/script-static-singlereq.js
 pause_test
 
 echo "starting test using vegeta..."
-echo "GET $TARGET_URL/vegeta" | vegeta attack -rate=30000/s -duration "${DEFAULT_DURATION}s"  | vegeta report -type=text
+echo "GET $TARGET_URL/vegeta" | vegeta attack -rate 0 -duration "${DEFAULT_DURATION}s"  | vegeta report -type=text
 
 pause_test
 

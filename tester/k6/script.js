@@ -5,18 +5,24 @@ export const options = {
   scenarios: {
     contacts: {
       executor: 'ramping-arrival-rate',
-      preAllocatedVUs: 10000,
       timeUnit: '1s',
+      preAllocatedVUs: 1000,
       stages: [
-        { target: 50000, duration: '0' }, // instantly jump to 500 iters/s
-        { target: 50000, duration: '60s' }, // continue with 500 iters/s for 10 minutes
+        { target: 200000, duration: '3m' }, // ramp-up to a HUGE load
       ],
     },
+  },
+
+  // reference: https://k6.io/docs/testing-guides/running-large-tests/#k6-options-to-reduce-resource-use
+  discardResponseBodies: true,
+
+  thresholds: {
+    http_req_failed: [{ threshold: "rate<0.05", abortOnFail: true, delayAbortEval: '10s' }], // availability threshold for error rate
+    http_req_duration: [{ threshold: "p(95)<1000", abortOnFail: true, delayAbortEval: '10s' }], // Latency threshold for percentile
   },
 };
 
 export default function () {
   const res = http.get('http://target:3000/test/k6');
   check(res, { 'status was 200': (r) => r.status == 200 });
-  sleep(1);
 }
