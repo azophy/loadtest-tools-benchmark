@@ -63,4 +63,5 @@ For a given target & given testing device specification:
 ## Results
 
 Currently available results:
+- [2024-03-10 06:30](https://github.com/azophy/loadtest-tools-benchmark/tree/main/results/20240310_063000)
 - [2024-03-01 14:00](https://github.com/azophy/loadtest-tools-benchmark/tree/main/results/20240301_140000)
