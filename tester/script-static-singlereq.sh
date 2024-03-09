@@ -16,7 +16,7 @@ pause_test
 echo "==============================="
 echo "starting test using plt..."
 PLT_CONCURRENCY_MULTIPLIER=5 # arbitrary number based on experiments to achieve max throughput
-PLT_CONCURRENCY=$(($NUM_THREAD * $PLT_CONCURRENCY))
+PLT_CONCURRENCY=$(($NUM_THREAD * $PLT_CONCURRENCY_MULTIPLIER))
 $(go env GOPATH)/bin/plt --concurrency $PLT_CONCURRENCY \
                          --duration="${DEFAULT_DURATION}s" \
                          curl -X GET "$TARGET_URL/plt"
