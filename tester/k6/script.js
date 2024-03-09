@@ -3,13 +3,14 @@ import { check } from 'k6';
 
 export const options = {
   scenarios: {
-    contacts: {
-      executor: 'ramping-arrival-rate',
-      timeUnit: '1s',
-      preAllocatedVUs: 1000,
-      stages: [
-        { target: 200000, duration: $__ENV.DEFAULT_DURATION + 's' }, // ramp-up to a HUGE load
-      ],
+    loadtest: {
+      /* refereces on selecting best executor for this scenario:
+       * - https://community.grafana.com/t/from-wrk-to-k6-equivalent-parameters-and-testing-methodology/111033/5
+       * - https://stackoverflow.com/questions/77742171/from-wrk-to-k6-equivalent-parameters-and-testing-methodology/77764031#77764031
+       */
+      executor: 'constant-vus',
+      vus: __ENV.NUM_THREAD,
+      duration: __ENV.DEFAULT_DURATION + 's',
     },
   },
 
@@ -23,6 +24,6 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get($__ENV.TARGET_URL + '/k6');
+  const res = http.get(__ENV.TARGET_URL + '/k6');
   check(res, { 'status was 200': (r) => r.status == 200 });
 }
