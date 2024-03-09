@@ -11,11 +11,11 @@ const autocannon = require('autocannon')
 
 let instance = autocannon({
   url: TARGET_URL + '/autocannon',
-  connections: 1000, 
+  connections: process.env.NUM_CONNECTIONS, 
   pipelining: 6, 
-  workers: 8,
+  workers: process.env.NUM_THREAD,
   timeout: 1, // in second
-  duration: DEFAULT_DURATION, 
+  duration: process.env.DEFAULT_DURATION, 
 }, console.log)
 
 // this is used to kill the instance on CTRL-C

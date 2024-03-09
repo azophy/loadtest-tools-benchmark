@@ -1,5 +1,5 @@
 import http from 'k6/http';
-import { check, sleep } from 'k6';
+import { check } from 'k6';
 
 export const options = {
   scenarios: {
@@ -8,7 +8,7 @@ export const options = {
       timeUnit: '1s',
       preAllocatedVUs: 1000,
       stages: [
-        { target: 200000, duration: '3m' }, // ramp-up to a HUGE load
+        { target: 200000, duration: $__ENV.DEFAULT_DURATION + 's' }, // ramp-up to a HUGE load
       ],
     },
   },
@@ -23,6 +23,6 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get('http://target:3000/test/k6');
+  const res = http.get($__ENV.TARGET_URL + '/k6');
   check(res, { 'status was 200': (r) => r.status == 200 });
 }
