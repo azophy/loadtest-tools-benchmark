@@ -19,3 +19,11 @@ RUN wget -qO- $K6_DOWNLOAD_URL | tar xvzf - -C /tmp \
 ENV PATH="${PATH}:/usr/local/go/bin"
 RUN wget -qO- $GO_DOWNLOAD_URL | tar xvzf - -C /usr/local \
  && go install github.com/vearutop/plt@latest
+
+# install wrk2
+RUN wget https://github.com/giltene/wrk2/archive/refs/heads/master.zip \
+ && unzip master.zip \
+ && apk add alpine-sdk openssl-dev zlib-dev \
+ && cd wrk2-master \
+ && mv wrk /usr/local/bin/wrk2
+ 
