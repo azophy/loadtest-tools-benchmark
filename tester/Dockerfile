@@ -24,6 +24,6 @@ RUN wget -qO- $GO_DOWNLOAD_URL | tar xvzf - -C /usr/local \
 RUN wget https://github.com/giltene/wrk2/archive/refs/heads/master.zip \
  && unzip master.zip \
  && apk add alpine-sdk openssl-dev zlib-dev \
- && cd wrk2-master \
- && mv wrk /usr/local/bin/wrk2
+ && make -C wrk2-master \
+ && mv wrk2-master/wrk /usr/local/bin/wrk2
  
