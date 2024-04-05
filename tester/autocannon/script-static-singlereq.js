@@ -10,12 +10,12 @@ if (TARGET_URL == undefined) {
 const autocannon = require('autocannon')
 
 let instance = autocannon({
-  url: TARGET_URL + '/autocannon',
-  connections: process.env.NUM_CONNECTIONS, 
-  pipelining: 6, 
+  url: TARGET_URL + '/autocannon/static-singlereq',
+  connections: process.env.NUM_CONNECTIONS,
+  pipelining: 6,
   workers: process.env.NUM_THREAD,
   timeout: 1, // in second
-  duration: process.env.DEFAULT_DURATION, 
+  duration: process.env.DEFAULT_DURATION,
 }, console.log)
 
 // this is used to kill the instance on CTRL-C

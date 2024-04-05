@@ -18,15 +18,19 @@ func main() {
         toolName := c.Param("tool")
 				return toolName
 			},
+			"run_name": func(c echo.Context, err error) string { // additional custom label
+        runName := c.Param("run_name")
+				return runName
+			},
 		},
 	})) // adds middleware to gather metrics
 	e.GET("/metrics", echoprometheus.NewHandler()) // adds route to serve gathered metrics
 
-  e.GET("/test/:tool", func(c echo.Context) error {
+  e.GET("/test/:tool/:run_name", func(c echo.Context) error {
 		return c.String(http.StatusOK, "ok")
 	})
 
-  e.POST("/test/:tool", func(c echo.Context) error {
+  e.POST("/test/:tool/:run_name", func(c echo.Context) error {
 		body, err := ioutil.ReadAll(c.Request().Body)
     if err != nil {
         return err

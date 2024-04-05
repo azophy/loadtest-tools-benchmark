@@ -24,6 +24,6 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get(__ENV.TARGET_URL + '/k6');
+  const res = http.get(__ENV.TARGET_URL + '/k6/static-singlereq');
   check(res, { 'status was 200': (r) => r.status == 200 });
 }

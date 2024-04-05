@@ -23,7 +23,7 @@ Tool | Tech stack | Notes
 [Autocannon](https://github.com/mcollina/autocannon) | Js | -
 [Drill](https://github.com/fcsonline/drill) | Rust, scriptable with yaml | -
 [Vegeta](https://github.com/tsenart/vegeta) | Go | -
-  
+
 
 ## Tools I intentionally excluded (at least for now)
 - Java based: jmeter, gatling, ab
@@ -40,7 +40,8 @@ For a given target & given testing device specification:
 ## scenarios I plan to test with
 - static single GET
 - dynamic single POST
-- complex multiple requests
+- static multiple requests
+- dynamic multiple requests
 
 ## The setup
 - Using docker compose, all network calls are made locally
@@ -55,9 +56,9 @@ For a given target & given testing device specification:
 5. To run the benchmark, the test suites are available at `./tester/scripts*.sh` . For example to run the default static single request test suite, run this:
    ```sh
    $ docker compose exec tester sh
-   # ./tester/script.sh
+   # ./tester/script-static-singlereq.sh
    ```
-   
+
 ## Results
 
 Currently available results:
