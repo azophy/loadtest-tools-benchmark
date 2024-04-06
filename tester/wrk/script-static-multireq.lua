@@ -16,7 +16,7 @@ request = function()
   counter = counter + 1
 
   -- If the counter is longer than the requests array length then reset it
-  if counter > #requests then
+  if counter > #methods then
     counter = 1
   end
 
