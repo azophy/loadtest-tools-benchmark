@@ -112,7 +112,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "builder",
-          "expr": "rate(echo_requests_total{url=\"/test/:tool/:run_name\"}[3s])",
+          "expr": "sum by(run_name, test_tool) (rate(echo_requests_total{url=\"/test/:tool/:run_name\"}[3s]))",
           "fullMetaSearch": false,
           "includeNullMetadata": false,
           "instant": false,
@@ -588,14 +588,14 @@
       "type": "barchart"
     }
   ],
-  "refresh": "",
+  "refresh": "5s",
   "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {},
