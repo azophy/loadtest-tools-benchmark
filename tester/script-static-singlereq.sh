@@ -19,6 +19,19 @@ wrk -c $NUM_CONNECTIONS \
 pause_test
 
 echo "==============================="
+echo "starting test using wrk2..."
+# set an impossibly high number as request rate
+wrk2 -R 1M \
+    -c $NUM_CONNECTIONS \
+    -t $NUM_THREAD \
+    --timeout 1s \
+    --latency \
+    -d "${DEFAULT_DURATION}s" \
+    $TARGET_URL/wrk2/static-singlereq
+
+pause_test
+
+echo "==============================="
 echo "starting test using vegeta..."
 echo "GET $TARGET_URL/vegeta/static-singlereq" | vegeta attack -rate 0 -max-workers $NUM_CONNECTIONS -duration "${DEFAULT_DURATION}s"  | vegeta report -type=text
 

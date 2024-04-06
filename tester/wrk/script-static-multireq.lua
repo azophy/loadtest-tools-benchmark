@@ -1,7 +1,7 @@
--- list of HTTP method & path pairs
-requests = {
-  { "GET", "/test/wrk/static-multireq"},
-  { "POST", "/test/wrk/static-multireq"},
+-- list of HTTP methods
+methods = {
+  "GET",
+  "POST",
 }
 
 -- below script were adapted from: http://czerasz.com/2015/07/19/wrk-http-benchmarking-tool-example/
@@ -10,7 +10,7 @@ counter = 1
 
 request = function()
   -- Get the next requests array element
-  local request_object = requests[counter]
+  local request_method = methods[counter]
 
   -- Increment the counter
   counter = counter + 1
@@ -21,5 +21,5 @@ request = function()
   end
 
   -- Return the request object with the current URL path
-  return wrk.format(request_object[1], request_object[2])
+  return wrk.format(request_method)
 end
