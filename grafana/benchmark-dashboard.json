@@ -112,7 +112,7 @@
           },
           "disableTextWrap": false,
           "editorMode": "builder",
-          "expr": "rate(echo_requests_total{url=\"/test/:tool\"}[3s])",
+          "expr": "rate(echo_requests_total{url=\"/test/:tool/:run_name\"}[3s])",
           "fullMetaSearch": false,
           "includeNullMetadata": false,
           "instant": false,
@@ -270,7 +270,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -364,7 +365,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -411,7 +413,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "avg(rate(echo_requests_total{url=\"/test/:tool\"}[5s]) != 0) by (test_tool)",
+          "expr": "avg(rate(echo_requests_total{url=\"/test/:tool/:run_name\"}[5s]) != 0) by (test_tool)",
           "format": "table",
           "instant": false,
           "legendFormat": "{{test_tool}}",
@@ -492,7 +494,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           },
@@ -539,7 +542,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "echo_requests_total",
+          "expr": "echo_requests_total{url=\"/test/:tool/:run_name\"}",
           "format": "table",
           "instant": false,
           "legendFormat": "{{test_tool}}",
