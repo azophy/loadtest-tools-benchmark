@@ -116,7 +116,7 @@
           "fullMetaSearch": false,
           "includeNullMetadata": false,
           "instant": false,
-          "legendFormat": "{{test_tool}}",
+          "legendFormat": "{{test_tool}}:{{run_name}}",
           "range": true,
           "refId": "A",
           "useBackend": false
