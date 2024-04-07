@@ -12,7 +12,7 @@ do
     pause_test
 done << END
 $SCRIPTPATH/vegeta/script-static-singlereq.sh
-$SCRIPTPATH/k6/script-static-singlereq.sh
+$SCRIPTPATH/plt/script-static-singlereq.sh
 k6 run $SCRIPTPATH/k6/script-static-singlereq.js
 node $SCRIPTPATH/autocannon/script-static-singlereq.js
 $SCRIPTPATH/wrk/wrk-script-static-singlereq.sh
