@@ -12,5 +12,10 @@ function randomString(length)
 	return table.concat(ret)
 end
 
-wrk.method = "POST"
-wrk.body   = randomString(10)
+request = function()
+  -- add random string as query param
+  url = wrk.path .. "?q=" .. randomString(5)
+
+  -- Return the request object with the current URL path
+  return wrk.format("POST", url)
+end
