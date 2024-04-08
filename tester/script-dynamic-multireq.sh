@@ -13,5 +13,6 @@ do
 done << END
 $SCRIPTPATH/wrk/wrk-script-dynamic-multireq.sh
 $SCRIPTPATH/wrk/wrk2-script-dynamic-multireq.sh
+k6 run $SCRIPTPATH/k6/script-dynamic-multireq.js
 END
 

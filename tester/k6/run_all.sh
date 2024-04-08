@@ -11,8 +11,9 @@ do
 
     pause_test
 done << END
-$SCRIPTPATH/wrk/wrk-script-static-multireq.sh
-$SCRIPTPATH/wrk/wrk2-script-static-multireq.sh
-k6 run $SCRIPTPATH/k6/script-static-multireq.js
+k6 run $SCRIPTPATH/script-static-singlereq.js
+k6 run $SCRIPTPATH/script-dynamic-singlereq.js
+k6 run $SCRIPTPATH/script-static-multireq.js
+k6 run $SCRIPTPATH/script-dynamic-multireq.js
 END
 

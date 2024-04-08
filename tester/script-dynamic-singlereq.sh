@@ -13,5 +13,6 @@ do
 done << END
 $SCRIPTPATH/wrk/wrk-script-dynamic-singlereq.sh
 $SCRIPTPATH/wrk/wrk2-script-dynamic-singlereq.sh
+k6 run $SCRIPTPATH/k6/script-dynamic-singlereq.js
 END
 
