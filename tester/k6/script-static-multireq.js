@@ -8,6 +8,6 @@ export default function () {
   const res = http.get(url);
   check(res, { 'status was 200': (r) => r.status == 200 });
 
-  const res2 = http.POST(url);
+  const res2 = http.post(url);
   check(res2, { 'status was 200': (r) => r.status == 200 });
 }

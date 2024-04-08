@@ -5,7 +5,10 @@ export { options } from './base.js'
 
 export default function () {
   const url = __ENV.TARGET_URL + '/k6/dynamic-singlereq?q=' + randomString(5);
+  const params = {
+    tags: { name: 'k6_dynamic-singlereq' },
+  };
 
-  const res = http.get(url);
+  const res = http.get(url, params);
   check(res, { 'status was 200': (r) => r.status == 200 });
 }
