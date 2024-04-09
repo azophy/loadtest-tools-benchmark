@@ -11,8 +11,7 @@ do
 
     pause_test
 done << END
-node $SCRIPTPATH/script-dynamic-singlereq-alt.js
-node $SCRIPTPATH/script-dynamic-singlereq.js
-node $SCRIPTPATH/script-static-singlereq.js
+node $SCRIPTPATH/script-dynamic-singlereq-setupreq-withworker.js
+node $SCRIPTPATH/script-dynamic-singlereq-setupreq.js
 END
 

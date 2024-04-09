@@ -7,18 +7,24 @@ if (TARGET_URL == undefined) {
   process.exit(1)
 }
 
+function randomString(length, charset='abcdefghijklmnopqrstuvwxyz') {
+  let res = '';
+  while (length--) res += charset[(Math.random() * charset.length) | 0];
+  return res;
+}
 const autocannon = require('autocannon')
 
 let instance = autocannon({
-  url: TARGET_URL + '/autocannon/dynamic-singlereq-alt',
+  url: 'http://target:3000/',
   connections: process.env.NUM_CONNECTIONS,
   pipelining: 6,
-  workers: process.env.NUM_THREAD,
+  //workers: process.env.NUM_THREAD,
   timeout: 1, // in second
   duration: process.env.DEFAULT_DURATION,
-      method: 'POST',
-      body: 'cobalah-[<id>]',
-  idReplacement: true,
+  setupRequest:  (req, context) => ({
+    ...req,
+    path: '/test/autocannon/dynamic-singlereq-setupreq?q=' + randomString(5),
+  })
 }, console.log)
 
 // this is used to kill the instance on CTRL-C
