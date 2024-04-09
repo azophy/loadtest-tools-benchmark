@@ -11,6 +11,7 @@ do
 
     pause_test
 done << END
+node $SCRIPTPATH/script-static-singlereq-old.js
 node $SCRIPTPATH/script-static-singlereq.js
 node $SCRIPTPATH/script-dynamic-singlereq.js
 node $SCRIPTPATH/script-static-multireq.js
