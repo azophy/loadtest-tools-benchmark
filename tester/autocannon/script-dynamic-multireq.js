@@ -14,4 +14,4 @@ runAutocannonScenario([
     method: 'POST',
     setupRequest: path.join(__dirname, 'dynamic-setup-request')
   },
-], '/test/autocannon/dynamic-singlereq')
+], '/test/autocannon/dynamic-multireq')
