@@ -11,7 +11,7 @@ do
 
     pause_test
 done << END
-$SCRIPTPATH/vegeta/script-static-singlereq.sh
+cd $SCRIPTPATH/vegeta && go run base.go script-static-singlereq.go
 $SCRIPTPATH/plt/script-static-singlereq.sh
 k6 run $SCRIPTPATH/k6/script-static-singlereq.js
 node $SCRIPTPATH/autocannon/script-static-singlereq.js

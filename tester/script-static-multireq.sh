@@ -14,5 +14,7 @@ done << END
 $SCRIPTPATH/wrk/wrk-script-static-multireq.sh
 $SCRIPTPATH/wrk/wrk2-script-static-multireq.sh
 k6 run $SCRIPTPATH/k6/script-static-multireq.js
+node $SCRIPTPATH/autocannon/script-static-multireq.js
+cd $SCRIPTPATH/vegeta && go run base.go script-static-multireq.go
 END
 

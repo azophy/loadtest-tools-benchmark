@@ -14,5 +14,7 @@ done << END
 $SCRIPTPATH/wrk/wrk-script-dynamic-multireq.sh
 $SCRIPTPATH/wrk/wrk2-script-dynamic-multireq.sh
 k6 run $SCRIPTPATH/k6/script-dynamic-multireq.js
+node $SCRIPTPATH/autocannon/script-dynamic-multireq.js
+cd $SCRIPTPATH/vegeta && go run base.go script-dynamic-multireq.go
 END
 
