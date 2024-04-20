@@ -27,3 +27,10 @@ RUN wget https://github.com/giltene/wrk2/archive/refs/heads/master.zip \
  && make -C wrk2-master \
  && mv wrk2-master/wrk /usr/local/bin/wrk2
  
+# install bun. ref: https://github.com/oven-sh/bun/issues/5545#issuecomment-1722326196
+RUN apk --no-cache add ca-certificates wget \
+ && wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
+ && wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.28-r0/glibc-2.28-r0.apk \
+ && apk add --no-cache --force-overwrite glibc-2.28-r0.apk \
+ && npm install -g bun
+
