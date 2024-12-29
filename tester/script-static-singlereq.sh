@@ -17,6 +17,7 @@ k6 run $SCRIPTPATH/k6/script-static-singlereq.js
 node $SCRIPTPATH/autocannon/script-static-singlereq.js
 $SCRIPTPATH/wrk/wrk-script-static-singlereq.sh
 $SCRIPTPATH/wrk/wrk2-script-static-singlereq.sh
+$SCRIPTPATH/wrk/go-wrk-script-static-singlereq.sh
 $SCRIPTPATH/cassowary/script-static-singlereq.sh
 drill --benchmark $SCRIPTPATH/drill/script.yaml
 END
