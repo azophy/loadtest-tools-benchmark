@@ -18,7 +18,8 @@ RUN wget -qO- $K6_DOWNLOAD_URL | tar xvzf - -C /tmp \
 
 ENV PATH="${PATH}:/usr/local/go/bin"
 RUN wget -qO- $GO_DOWNLOAD_URL | tar xvzf - -C /usr/local \
- && go install github.com/vearutop/plt@latest
+ && go install github.com/vearutop/plt@latest \
+ && go install github.com/tsliwowicz/go-wrk@latest
 
 # install wrk2
 RUN wget https://github.com/giltene/wrk2/archive/refs/heads/master.zip \
@@ -26,7 +27,7 @@ RUN wget https://github.com/giltene/wrk2/archive/refs/heads/master.zip \
  && apk add alpine-sdk openssl-dev zlib-dev \
  && make -C wrk2-master \
  && mv wrk2-master/wrk /usr/local/bin/wrk2
- 
+
 # install bun. ref: https://github.com/oven-sh/bun/issues/5545#issuecomment-1722326196
 RUN apk --no-cache add ca-certificates wget \
  && wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub \
